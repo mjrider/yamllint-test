@@ -1,0 +1,16 @@
+name: CI
+# yamllint disable rule:line-length
+
+on:
+  push:
+
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Getting your configuration from GitHub
+        uses: actions/checkout@v1
+      - name: Running YAMLlint
+        uses: "docker://pipelinecomponents/yamllint:latest"
+        with:
+          args: yamllint .
